@@ -141,6 +141,7 @@ function printMatrix(matrix) {
     return;
 }
 var currentMatrix = null;
+var previousMatrix = null;
 function onCommand(command) {
     if (command == "") {
         deferError(null);
@@ -254,7 +255,7 @@ function onCommand(command) {
             var r1 = parseInt(arr[1]);
             var values = [];
             for (var i = 0; i < currentMatrix.getColumns(); i++) {
-                values.push(arr[i + 2]);
+                values.push(parseFloat(arr[i + 2]));
             }
             currentMatrix.addEquation(r1, values);
             printMatrix(currentMatrix);

@@ -158,6 +158,7 @@ function printMatrix(matrix:Matrix|null){
 }
 
 let currentMatrix : null|Matrix = null; 
+let previousMatrix : null|Matrix = null;
 
 function onCommand(command:string){
  if (command == "") {
@@ -199,6 +200,7 @@ function onCommand(command:string){
        let scaler = parseFloat(arr[3]);
        let where = parseInt(arr[4]);
 
+       
        let errType : ErrorType = currentMatrix.rowOperation(r1, r2, scaler, where);
        if (errType != ErrorType.SUCCESS){
        	  deferError("Error occurred in row operation");
@@ -272,7 +274,7 @@ function onCommand(command:string){
 	let r1 = parseInt(arr[1]); 
 	let values :number[] = [];
 	for (let i = 0; i < currentMatrix.getColumns(); i++){
-	    values.push(arr[i+2]); 
+	    values.push(parseFloat(arr[i+2])); 
 	}
 	currentMatrix.addEquation(r1, values);
   	printMatrix(currentMatrix);  
